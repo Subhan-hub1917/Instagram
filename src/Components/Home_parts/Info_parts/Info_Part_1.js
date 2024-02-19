@@ -1,10 +1,12 @@
+import image1 from './Info images/1.jpg';
 const Info_Part_1 = () => {
     return (
         <>
             <div className="row  p-3 justify-content-around align-items-center">
                 <div className="col-8">
                     <div className="d-flex align-items-center">
-                        <i className="h3 bi bi-person"></i>
+                        <img src={image1} alt='1image' className='rounded-circle mb-1 dp-info'></img>
+                        {/* <i className="h3 bi bi-person"></i> */}
                         <h6 className="ms-1">Subhan</h6>
                     </div>
                 </div>

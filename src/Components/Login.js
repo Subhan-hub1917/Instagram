@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { MyContext } from "../MyContext";
 
 const Login = () => {
+
+  const {Login,setLogin}=useContext(MyContext);
+
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
@@ -23,6 +27,7 @@ const Login = () => {
                 className="form-control"
                 id="floatingInput"
                 placeholder="name@example.com"
+                value={'name@example.com'}
               />
               <label htmlFor="floatingInput">Email address</label>
             </div>
@@ -34,6 +39,7 @@ const Login = () => {
                     className="form-control"
                     id="floatingPassword"
                     placeholder="Password"
+                    value={'Admin'}
                   />
                 <div  className="input-group-text"
                   style={{ cursor: 'pointer' }}
@@ -51,7 +57,7 @@ const Login = () => {
             </div>
             
             <div className="form-floating mb-3">
-              <input type="submit" className="col-12 btn btn-primary" value="Login" />
+              <input type="submit" className="col-12 btn btn-primary" value="Login" onClick={()=>setLogin(false)}/>
             </div>
 
           </div>

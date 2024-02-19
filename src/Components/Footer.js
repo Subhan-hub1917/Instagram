@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { MyContext } from "../MyContext";
 
 const Footer = () => {
-    const {theme} = useContext(MyContext)
+    const {theme,reels,setReels,story} = useContext(MyContext)
     return ( 
-        <div className={`d-block sticky-bottom bg-light d-md-none container-fluid ${theme ? 'bg-dark text-light':'bg-light text-dark '}`}>
+        <div className={` sticky-bottom bg-light d-md-none container-fluid ${theme ? 'bg-dark text-light':'bg-light text-dark '} ${ reels || story ? 'd-none':' d-block d-md-none'}`}>
             <div className="row py-2 border-top border-dark justify-content-between ">
                 <div className="col-2 ">
                     <Link to="/" className="text-decoration-none">
@@ -18,8 +18,9 @@ const Footer = () => {
                 </div>
                 
                 <div className="col-2">
-                    <i className="h4  bi bi-collection-play"></i>
-                    
+                    <Link to="/Reels" className="text-decoration-none" onClick={()=>setReels(true)}>
+                        <i className={`h4  bi bi-collection-play  ${theme ? 'text-light ':'text-dark'}`}></i>   
+                    </Link>    
                 </div>
                 
                 <div className="col-2">

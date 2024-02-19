@@ -5,15 +5,21 @@ const Notifications = () => {
         isOpenNotifications,setIsOpenNotifications,
         setIsOpenSearch,setIsOpenMore,
         isMessenger,theme,
-        toggler,toggleSidebar
+        toggler,toggleSidebar,clearStates
         }=useContext(MyContext);
 
   return (
     <>
-    <div className={`d-lg-flex m-1 mt-2 btn ${isMessenger ? 'justify-content-center': 'justify-content-start'}  
-    ${theme === true ? 'btn-dark' : 'btn-light' } `} id="sidebar-toggle " onClick={()=>toggler(setIsOpenNotifications)}>
-            <i className="h5 bi bi-suit-heart"></i>
-            <p className={`d-none h5 ms-2 ${isMessenger ? '': 'd-lg-block'}`}>Notifications</p>
+    <div className={`d-lg-flex m-1 mt-2 popup btn 
+    ${isMessenger ? 'justify-content-center': 'justify-content-start'}  
+    ${theme === true ? 'btn-dark' : 'btn-light' } `} id="sidebar-toggle " 
+    onClick={()=>{clearStates();toggler(setIsOpenNotifications)}}>
+            <i className={`h5 bi 
+                ${ isOpenNotifications ? 'bi-suit-heart-fill' : 'bi-suit-heart' } 
+                ${theme ? 'text-light' : 'text-dark' }`}></i>
+            <p className={`d-none h5 ms-2 
+                ${isMessenger ? '': 'd-lg-block' } 
+                ${ isOpenNotifications ? 'fw-bolder' : ''}`}>Notifications</p>
     </div>
 
     <div className={`sidebar ${isOpenNotifications ? 'open' : ''} 
@@ -26,7 +32,7 @@ const Notifications = () => {
        
       <div className="sidebar-content ">
            <div>
-                 <div className="col-12 d-flex flex-column height-100vh ">
+                 <div className="col-12 d-flex flex-column height-100vh">
                             <div className="row">
                              <div className="col-2 d-none d-md-block d-flex flex-column height-100vh">
                                 <div className={`mt-1 btn btn-rounded ${theme ? 'btn-dark': 'btn-light'}`}>
@@ -48,7 +54,7 @@ const Notifications = () => {
                                      <i className="h5 bi bi-chat-dots"></i>
                                  </div>
                                  <div className={`mt-3  btn btn-rounded  ${theme ? 'btn-dark': 'btn-light'}`}  onClick={()=>toggler(setIsOpenNotifications)}>
-                                     <i className="h5 bi bi-suit-heart"></i>
+                                     <i className={`h5 bi ${ isOpenNotifications ? 'bi-suit-heart-fill' : 'bi-suit-heart' } ${theme ? 'text-light' : 'text-dark' }`}></i>
                                  </div>
                                  <div className={`mt-3 btn btn-rounded  ${theme ? 'btn-dark': 'btn-light'}`}>
                                      <i className="h5 bi bi-plus-square"></i>

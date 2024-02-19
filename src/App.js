@@ -11,9 +11,17 @@ import Messenger from './Components/Home_parts/Menu_parts/Messenger';
 import UserProfile from './UserProfile';
 import Navbar  from './Components/Home_parts/Navbar';
 import Footer from './Components/Footer';
+import Story from './Components/Home_parts/Main_parts/Story';
+import ReelsPage from './ReelsPage';
+import Reels from './Components/Home_parts/Menu_parts/Reels';
 
 function App() {
   
+  const [home, setHome] = useState(true);
+  const [reels, setReels] = useState(false);
+  const [explore, setExplore] = useState(false);
+  const [create, setCreate] = useState(false);
+  const [story, setStory] = useState(false);
   const [isOpenNotifications, setIsOpenNotifications] = useState(false);
   const [isOpenMore, setIsOpenMore] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
@@ -21,6 +29,10 @@ function App() {
   const [openChat, setOpenChat]=useState(false);
   const [showPopover, setShowPopover] = useState(true);
   const [appearance, setAppearance] = useState(false);
+
+  const [login, setLogin] = useState(true);
+  const [loading, setLoading] = useState(true);
+  
   
   // Retrieve the initial state from localStorage, if available, or default to false
   const [isMessenger, setIsMessenger] = useState(() => {
@@ -36,7 +48,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(theme));
     localStorage.setItem('isMessenger', JSON.stringify(isMessenger));
-  }, [theme,isMessenger]);
+  }, [theme,isMessenger,setReels]);
 
   const handleMessenger=()=>{
       setIsMessenger(true)
@@ -59,35 +71,75 @@ function App() {
     setCurrent((prev) => !prev);
     setIncoming((prev) => !prev);
   };
+  const clearStates = () => {
+    setHome(false);
+    setReels(false);
+    setCreate(false);
+    setExplore(false);
+    setIsOpenProfile(false);
+    setIsOpenMore(false);
+    setIsOpenSearch(false);
+    setIsMessenger(false)
+  };
+setTimeout(() => {
+  setLoading(false)
+}, 4000);
+
   return (
     <MyContext.Provider 
       value={{
         /////////////////    useStates    /////////////////////
-          isOpenMore,setIsOpenMore,
-          isOpenNotifications,setIsOpenNotifications,
+          home, setHome,
           isOpenSearch,setIsOpenSearch,
-          showPopover, setShowPopover,
-          isOpenProfile, setIsOpenProfile,
+          reels, setReels,
+          explore,setExplore,
+          isOpenNotifications,setIsOpenNotifications,
           isMessenger, setIsMessenger,
+          create, setCreate,
+          isOpenProfile, setIsOpenProfile,
+          isOpenMore,setIsOpenMore,
+          story, setStory,
+          Login,setLogin,
+          
+          theme,setTheme,
+          showPopover, setShowPopover,
           openChat, setOpenChat,
           appearance, setAppearance,
-          theme,setTheme,
         ////////////////      Functions   /////////////////////
-        toggler,toggleSidebar,handleHome,handleMessenger,handleChat,handleCloseChat
+        toggler,toggleSidebar,handleHome,handleMessenger,handleChat,handleCloseChat,clearStates
         }}>
           
         <BrowserRouter>
-            <Navbar/>
+        
+        {
+        loading 
+        ? 
+          <Loading/>
+        :
+          <>  
+        { (login===true && loading ===false ) 
+        ? 
+          <Login/>   
+        :      
+        < >
+
       <div className="App">
-          <Routes>
-            <Route exact path='/' Component={Home}/>
-            <Route exact path='/Login' Component={Login}/>
-            <Route exact path='/Loading' Component={Loading}/>
-            <Route exact path='/Messenger' Component={Messenger}/>
-            <Route exact path='/Profile' Component={UserProfile}/>        
-          </Routes>
+            <Navbar/>
+              <Routes>
+                <Route exact path='/' Component={Home}/>
+                {/* <Route exact path='/Login' Component={Login}/> */}
+                <Route exact path='/Loading' Component={Loading}/>
+                <Route exact path='/Messenger' Component={Messenger}/>
+                <Route exact path='/Profile' Component={UserProfile}/> 
+                <Route exact path='/Story' Component={Story}/>
+                <Route exact path='/Reels' Component={ReelsPage}/>
+            </Routes>
+          <Footer/>
       </div>
-        <Footer/>
+      </>
+      }
+      </>
+      }
         </BrowserRouter>
     </MyContext.Provider>
   );

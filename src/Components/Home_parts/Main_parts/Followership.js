@@ -3,7 +3,7 @@ import Post_related from "./Post_related";
 import Video_post from "./Video_post";
 import { MyContext } from "../../../MyContext";
 import Videopost from "./Video_post";
-
+import image1 from './DP/1.jpg';
 const Followership = () => {
     const {theme ,showPopover}=useContext(MyContext)
     return ( 
@@ -13,7 +13,8 @@ const Followership = () => {
                     <div className={`d-flex align-items-center justify-content-between mb-2 ${showPopover!==true ? 'Blur' : '' }`}>
                         <div className="d-flex mx-md-5">
                             <div className="display-6 text-danger me-2">
-                                <i className="bi bi-person-circle"></i>
+                                <img src={image1} alt='1image' className='rounded-circle mb-1 dp-info'></img>
+                                {/* <i className="bi bi-person-circle"></i> */}
                             </div>
                             <div className="d-flex justify-content-between fw-bold">
                                 <h5>Subhan</h5>

@@ -6,7 +6,17 @@ import { useContext } from 'react';
 import { MyContext } from '../../MyContext';
 import { Link } from 'react-router-dom';
 const Menu = () => {
-    const {isMessenger,handleHome,handleMessenger,theme,showPopover}=useContext(MyContext);
+    const {
+            isMessenger,handleMessenger,
+            handleHome,
+            theme,
+            home,setHome,
+            setReels,reels,
+            setExplore,explore
+            ,create,setCreate,
+            isOpenProfile,setIsOpenProfile, 
+            showPopover,clearStates 
+        }=useContext(MyContext);
 
    
     <link rel="stylesheet" href="https://fonts.google.com/specimen/Lobster?query=lobster&sort=popularity" />
@@ -23,9 +33,13 @@ const Menu = () => {
                     </div>
                 
                 <Link to="/" className='text-decoration-none' onClick={handleHome}>
-                    <div className={`d-lg-flex m-1 mt-2 btn ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} ${theme === true ? 'btn-dark' : 'btn-light' } `}>
-                        <i className="h5 bi bi-house-door"></i>
-                        <p className={`d-none h5 ms-1   ${isMessenger===true ? '': 'd-lg-block'}`}>Home</p>
+                    <div className={`d-lg-flex m-1 mt-2 btn 
+                        ${isMessenger===true ? 'justify-content-center': 'justify-content-start'}
+                        ${theme === true ? 'btn-dark' : 'btn-light' } `}
+                        onClick={()=>{clearStates();setHome(true);}}
+                        >
+                            <i className={`h5 bi ${ home ? 'bi-house-door-fill' : 'bi-house-door ' } ${theme ? 'text-light' : 'text-dark' }`}></i>
+                            <p className={`d-none h5 ms-1   ${isMessenger===true ? '': 'd-lg-block'} ${ home ? 'fw-bolder' : '' }`}>Home</p>
                     </div>
                 </Link>
                 
@@ -33,20 +47,28 @@ const Menu = () => {
                             <Search/>
                     {/* ////////////////////////////////////////////// */}
                 
-                    <div className={`d-lg-flex m-1 mt-2 btn ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} ${theme === true ? 'btn-dark' : 'btn-light' } `}>
-                        <i className="h5 bi bi-compass"></i>
-                        <p className={`d-none  h5 ms-2  ${isMessenger===true ? '': 'd-lg-block'} `}>Explore</p>
+                    <div className={`d-lg-flex m-1 mt-2 btn 
+                        ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} 
+                        ${theme === true ? 'btn-dark' : 'btn-light' } `}
+                        onClick={()=>{clearStates();setExplore(true)}}>
+                            <i className={`h5 bi ${ explore ? 'bi-compass-fill' : 'bi-compass ' } ${theme ? 'text-light' : 'text-dark' }`}></i>
+                            <p className={`d-none  h5 ms-2  ${isMessenger===true ? '': 'd-lg-block'} ${ explore ? 'fw-bold' : '' } ${ explore ? 'fw-bolder' : '' }`}>Explore</p>
                     </div>
 
-                    <div className={`d-lg-flex m-1 mt-2 btn ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} ${theme === true ? 'btn-dark' : 'btn-light' } `}>
-                        <i className="h5 bi bi-collection-play"></i>
-                        <p className={`d-none  h5 ms-2  ${isMessenger===true ? '': 'd-lg-block'} `}>Reels</p>
+                <Link to="/Reels" className='text-decoration-none'>
+                    <div className={`d-lg-flex m-1 mt-2 btn 
+                        ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} 
+                        ${theme === true ? 'btn-dark' : 'btn-light' } `}
+                        onClick={()=>{clearStates();setReels(true)}}>
+                            <i className={`h5 bi ${ reels ? 'bi-collection-play-fill' : 'bi-collection-play ' } ${theme ? 'text-light' : 'text-dark' }`}></i>
+                            <p className={`d-none  h5 ms-2  ${isMessenger===true ? '': 'd-lg-block'} ${ reels ? 'fw-bold' : '' } ${ reels ? 'fw-bolder' : '' }`}>Reels</p>
                     </div>
+                </Link>
                 
                     <Link to="/Messenger" className='text-decoration-none'>
-                        <div className={`d-lg-flex m-1 mt-2 btn ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} ${theme === true ? 'btn-dark' : 'btn-light' } `}  onClick={handleMessenger}>
-                            <i className="h5 bi bi-chat-dots"></i>
-                            <p className={`d-none h5 ms-2   ${isMessenger===true ? '': 'd-lg-block'}`} >Messages</p>
+                        <div className={`d-lg-flex m-1 mt-2 btn ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} ${theme === true ? 'btn-dark' : 'btn-light' } `}  onClick={()=>{clearStates();handleMessenger()}}>
+                            <i className={`h5 bi ${ isMessenger ? 'bi-chat-dots-fill' : 'bi-chat ' } ${theme ? 'text-light' : 'text-dark' }`}></i>
+                            <p className={`d-none h5 ms-2   ${isMessenger===true ? '': 'd-lg-block'} ${ isMessenger ? 'fw-bolder' : '' } `}>Messages</p>
                         </div>
                     </Link>
                 
@@ -54,15 +76,21 @@ const Menu = () => {
                         <Notifications/>
                     {/* ////////////////////////////////////////////// */}
 
-                    <div className={`d-lg-flex m-1 mt-2 btn  ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} ${theme === true ? 'btn-dark' : 'btn-light' } `}>
-                        <i className="h5 bi bi-plus-square"></i>
-                        <p className={`d-none h5 ms-2   ${isMessenger===true ? '': 'd-lg-block'}`}>Create</p>
+                    <div className={`d-lg-flex m-1 mt-2 btn  
+                        ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} 
+                        ${theme === true ? 'btn-dark' : 'btn-light' } `}
+                        onClick={()=>{clearStates();setCreate(true)}}>
+                            <i className={`h5 bi ${ create ? 'bi-plus-square-fill' : 'bi-plus-square' } ${theme ? 'text-light' : 'text-dark' }`}></i>
+                            <p className={`d-none h5 ms-2   ${isMessenger===true ? '': 'd-lg-block'}  ${ create ? 'fw-bolder' : '' } `}>Create</p>
                     </div>
                
                     <Link to="/Profile" className='text-decoration-none'> 
-                        <div className={`d-lg-flex m-1 mt-2 btn  ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} ${theme === true ? 'btn-dark' : 'btn-light' } `}>
-                            <i className="h5 bi bi-person"></i>
-                            <p className={`d-none h5 ms-2   ${isMessenger===true ? '': 'd-lg-block'}`}>Profie</p>
+                        <div className={`d-lg-flex m-1 mt-2 btn        
+                            ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} 
+                            ${theme === true ? 'btn-dark' : 'btn-light' } `}
+                            onClick={()=>{clearStates();setIsOpenProfile(true)}}>
+                                <i className={`h5 bi ${ isOpenProfile ? 'bi-person-fill' : 'bi-person' } ${theme ? 'text-light' : 'text-dark' }`}></i>
+                                <p className={`d-none h5 ms-2   ${isMessenger===true ? '': 'd-lg-block'} ${ isOpenProfile ? 'fw-bolder' : '' }`}>Profie</p>
                         </div>
                     </Link>
                     {/* ////////////////////////////////////////////////// */}

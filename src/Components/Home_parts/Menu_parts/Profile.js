@@ -40,10 +40,10 @@ const Profile = () => {
             </div>
             <div className="justify-content-center mt-2">
                 <div className="d-flex  border-top border-1 border-secondary justify-content-center">
-                    <div className="mx-3 p-3 border-top border-2 border-dark "><i className="d-none d-md-block bi bi-grid-3x3"></i> POSTS</div>
-                    <div className="mx mx-3 p-3 border-top border-2 border-dark "><i className="d-none d-md-block bi bi-collection-play"></i> REELS</div>
-                    <div className="mx-3 p-3 border-top border-2 border-dark "><i className="d-none d-md-block bi bi-bookmark "></i> SAVED</div>
-                    <div className="mx-3 p-3 border-top border-2 border-dark "><i className="d-none d-md-block bi bi-tag"></i> TAGGED</div>
+                    <div className="d-flex mx-3 p-3 border-top border-2 border-dark "><i className=" me-2 d-none d-md-block bi bi-grid-3x3"></i> POSTS</div>
+                    <div className="d-flex mx mx-3 p-3 border-top border-2 border-dark "><i className=" me-2 d-none d-md-block bi bi-collection-play"></i> REELS</div>
+                    <div className="d-flex mx-3 p-3 border-top border-2 border-dark "><i className=" me-2 d-none d-md-block bi bi-bookmark "></i> SAVED</div>
+                    <div className="d-flex mx-3 p-3 border-top border-2 border-dark "><i className=" me-2 d-none d-md-block bi bi-tag"></i> TAGGED</div>
                 </div>
                 <div>
 

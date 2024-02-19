@@ -2,7 +2,7 @@ import React, { useRef, useContext } from 'react';
 import { MyContext } from '../../../MyContext';
 import Swicth_Appearance from './More/Switch_Apperance';
 const Submenu = () => {
-    const {isOpenMore,setIsOpenMore,isMessenger,toggler,theme}=useContext(MyContext);
+    const {isOpenMore,setIsOpenMore,isMessenger,toggler,theme,clearStates}=useContext(MyContext);
     const sidebarRef = useRef(null);
     
       
@@ -10,9 +10,12 @@ const Submenu = () => {
   return (
     <>
      
-    <div className={`d-lg-flex m-1 mt-2 btn ${isMessenger ? 'justify-content-center': 'justify-content-start'} ${theme ? 'btn-dark' : 'btn-light' } `}  id="sidebar-toggle"  onClick={()=>toggler(setIsOpenMore)}>
-            <i className="h5 bi bi-list"></i>
-            <p className={`d-none h5 ms-2 ${isMessenger ? '': 'd-lg-block'}`}>More</p>
+    <div className={`d-lg-flex m-1 mt-2 btn 
+        ${isMessenger ? 'justify-content-center': 'justify-content-start'} 
+        ${theme ? 'btn-dark' : 'btn-light' } `}  id="sidebar-toggle"  
+        onClick={()=>{toggler(setIsOpenMore)}}>
+            <i className={`h5 bi ${ isOpenMore ? 'bi-list' : 'bi-list' } ${theme ? 'text-light' : 'text-dark' }`}></i>
+            <p className={`d-none h5 ms-2 ${isMessenger ? '': 'd-lg-block'} ${ isOpenMore ? 'fw-bolder' : ''} `}>More</p>
     </div>
     
     <div ref={sidebarRef} className={`More mt-5 border-5 border-rounded height-80vh  ${isOpenMore ? 'open' : ''}`}>   

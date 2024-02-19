@@ -51,7 +51,7 @@ return (
     <>
      <div className={`position-relative ${theme === true ? 'bg-secondary' : 'bg-dark' } `} >
       <video ref={videoRef}  src="./Dilpe.mp4" type="video/mp4"  onClick={togglePlayPause} 
-        controls={false} autoPlay className="custom-video"  style={{ width: '100%', height: '550px' }}>
+        controls={false} className="img-fluid" style={{'height':'600px'}}>
        {/* <source  src="./Liyakun.mp4" type="video/mp4" /> */}
       </video>
       <div className=" position-absolute bottom-0 end-0 " style={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}>

@@ -5,6 +5,7 @@ import image1 from './Images/wp9135412-blue-mosque-4k-wallpapers.jpg';
 import image3 from './Images/wp9135429-blue-mosque-4k-wallpapers.jpg';
 import image4 from './Images/wp9135529-blue-mosque-4k-wallpapers.jpg';
 import image5 from './Images/wp9135601-blue-mosque-4k-wallpapers.jpg';
+import image from './DP/1.jpg';
 import Post_related from './Post_related';
 import { useContext } from 'react';
 import { MyContext } from '../../../MyContext';
@@ -33,7 +34,8 @@ const Image_post = () => {
         <div className={` d-flex align-items-center justify-content-between mb-2 ${theme === true ? 'text-light' : 'text-dark' }`}>
                         <div className={`d-flex mx-md-5 ${showPopover!==true ? 'Blur' : '' }`}>
                             <div className="display-6 text-danger me-2">
-                                <i className="bi bi-person-circle"></i>
+                                <img src={image} alt='1image' className='rounded-circle mb-1 dp-info'></img>
+                                {/* <i className="bi bi-person-circle"></i> */}
                             </div>
                             <div className="d-flex justify-content-between fw-bold">
                                 <h5>Subhan</h5>
@@ -54,17 +56,17 @@ const Image_post = () => {
                             </Carousel>
                             {/* ******************************************************** */}
                         {/* ////////////////////   Reaction  /////////////////////// */}
-                            <div className="d-flex mx-1 mt-2 justify-content-between">
+                            <div className={`d-flex mx-1 mt-2 justify-content-between ${theme ? 'text-light' : 'text-dark' }`}>
                                 <div className="d-flex text-start">
                                     <i className="h3 mx-1 bi bi-suit-heart"></i>
                                     <i className="h3 mx-1 bi bi-chat"></i>
                                     <i className="h3 mx-1 bi bi-send"></i>
                                 </div>
-                                <div className="">
+                                <div className={``}>
                                     <i className="h3 mx-1 bi bi-bookmark"></i>
                                 </div>
                             </div>
-                            <div className="d-flex">
+                            <div className={`d-flex ${theme ? 'text-light' : 'text-dark' }`}>
                                 <h6 className="fw-bold ms-2 me-2">Subhan</h6>
                                 <p>This is the Description of the video</p>
                             </div>

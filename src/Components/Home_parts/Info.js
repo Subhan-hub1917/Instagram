@@ -3,7 +3,6 @@ import Info_Part_1 from "./Info_parts/Info_Part_1";
 import Info_Part_2 from "./Info_parts/Info_Part_2";
 import Info_Part_3 from "./Info_parts/Info_Part_3";
 import { MyContext } from "../../MyContext";
-
 const Info = () => {
     const { theme,showPopover } =useContext(MyContext);
     return ( 

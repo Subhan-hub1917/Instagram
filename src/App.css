@@ -1,3 +1,23 @@
+.scrollable-container {
+    overflow-y: scroll; /* Enable vertical scrollbar */
+    height: 100vh; /* Define a fixed height for the scrollable container */
+    scroll-snap-type: y mandatory; /* Enable scroll snapping */
+  }
+  
+  .scrollable-item {
+    height: 100vh; 
+    scroll-snap-align: start; 
+  }
+
+.dp{
+    height: 60px;
+    width: 60px;
+}
+.dp-info{
+    height: 40px;
+    width: 40px;
+}
+
 /* Define a custom thin and stylish scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
     width: 5px; 
@@ -30,7 +50,7 @@
 .sidebar {
     /* border-left: 2px solid  var(--primary); */
     position: fixed;
-    left: -500px; 
+    left: -490px; 
     top: 0;
     width: 470px;
     height: 100vh;
@@ -174,6 +194,12 @@
     width: 100%;
 }
 @media (min-width: 768px) {
+    .height-md-100vh {
+      height: 100vh;
+    }
+  }
+  
+@media (min-width: 1200px) {
     .height-md-100vh {
       height: 100vh;
     }

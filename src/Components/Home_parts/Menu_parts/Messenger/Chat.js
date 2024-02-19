@@ -5,7 +5,7 @@ const Chat = () => {
     const {isMessenger,openChat,setOpenChat,handleCloseChat,theme}=useContext(MyContext);
     
     return ( 
-        <div className={`height-80vh height-md-100vh ${isMessenger===true ? 'col-12 col-md-7 col-lg-8':''} ${openChat===true ? 'd-block':' d-none'} `} >
+        <div className={`height-80vh height-md-100vh ${isMessenger===true ? 'col-12 col-md-7 col-lg-8':'col-12 col-md-7 col-lg-7'} ${openChat===true ? 'd-block':' d-none'} `} >
             
             <div className={`row p-2 border-lg border-bottom align-items-center sticky-top height-10vh ${theme ? 'text-light bg-primary ':'text-light bg-primary'}`}>
                 <div className="col-8 d-flex align-items-center ">

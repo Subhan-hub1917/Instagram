@@ -3,9 +3,11 @@ import Notifications from "./Menu_parts/Notifications";
 import { MyContext } from "../../MyContext";
 
 const Navbar = () => {
-    const {theme,setTheme,toggler}=useContext(MyContext);
+    const {theme,setTheme,toggler,reels,story}=useContext(MyContext);
     return ( 
-        <div className={`d-block d-md-none sticky-top container-fluid border-bottom overflow-hidden ${theme ? 'text-light border-light bg-dark':'text-dark border-dark bg-light'}`}>
+        <div className={`d-md-none sticky-top container-fluid border-bottom overflow-hidden 
+        ${reels || story ? 'd-none':'d-block d-md-none'}  
+        ${theme ? 'text-light border-light bg-dark':'text-dark border-dark bg-light'}`}>
             <div className="row d-flex align-items-center justify-content-between">
             
                 <div className="col-2 ">
@@ -25,7 +27,7 @@ const Navbar = () => {
     
             
                 <div className="col-3 text-end d-flex align-items-center mb-2">
-                    <i className="h4 ms-2 mt-2 bi bi-brightness-high" onClick={()=>toggler(setTheme)}></i>
+                    <i className={`h4 ms-2 mt-2 bi ${theme ? 'bi-brightness-high':'bi-moon'}`} onClick={()=>toggler(setTheme)}></i>
                     <Notifications className="me-1" />
                 </div>
             
