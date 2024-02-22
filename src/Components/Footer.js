@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MyContext } from "../MyContext";
-
+import profile from './DP/1.jpg';
 const Footer = () => {
     const {theme,reels,setReels,story} = useContext(MyContext)
     return ( 
@@ -36,7 +36,8 @@ const Footer = () => {
                 
                 <div className="col-2">
                     <Link to="/Profile" className={`text-decoration-none ${theme ? 'text-light ':'text-dark'}`}>
-                        <i className="h4 bi bi-person"></i>
+                        <img src={profile} alt="Profile" className="rounded-circle dp-sm"/>
+                        {/* <i className="h4 bi bi-person"></i> */}
                     </Link>
                 </div>
 

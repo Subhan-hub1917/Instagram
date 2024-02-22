@@ -11,6 +11,8 @@ const Reels = () => {
 
     const {theme,setReels} = useContext(MyContext);
     
+    
+
     const [mute,setMute]=useState([true]);
     const [play,setPlay]=useState(false);
 
@@ -65,12 +67,12 @@ const Reels = () => {
                         </div>
 
                         <div className='col-12 col-md-6 col-lg-4 height-100vh position-relative  scrollable-item'>
-                            <Link to="/" className='text-decoration-none'>
-                                <i className={`bi bi-x h4  ${theme ? 'text-light':'text-dark' }`} onClick={()=>setReels(false)}></i>
-                            </Link>    
                             <video ref={videoRef0} src={video} className='col-12 col-md-11 mt-2  my-md-4 img-fluid height-80vh' onClick={()=>handlePlayPause(videoRef0)} autoPlay={false} controls={false} muted={mute}></video>
                             
                             <div className='d-flex flex-column position-absolute end-0 top-0 me-2 mt-4 rounded-circle'>
+                                <Link className='text-decoration-none' to="/" >
+                                    <i className={`d-block d-md-none mb-4 bi bi-x h4 ${theme ? 'text-light':'text-dark' }`} onClick={()=>setReels(false)}></i>
+                                </Link>
                                 <i className={`h4 bi ${mute? 'bi-volume-down':'bi-volume-up'}`} onClick={()=>{setMute(!mute)}}></i>
                             </div>
                             <div className='me-2 d-flex flex-column position-absolute end-0 top-50  '>
@@ -108,7 +110,10 @@ const Reels = () => {
                             <video ref={videoRef1} src={video1} className='col-12 col-md-11 mt-2  my-md-4 img-fluid height-80vh' onClick={()=>handlePlayPause(videoRef1)} autoPlay={false}  controls={false} muted={mute}></video>
                             
                             <div className='d-flex flex-column position-absolute end-0 top-0 me-2 mt-4 rounded-circle'>
-                                <i className={`h4 bi ${mute? 'bi-volume-down':'bi-volume-up'}`} onClick={()=>{setMute(!mute)}}></i>
+                                <Link className='text-decoration-none' to="/" >
+                                    <i className={`d-block d-md-none mb-4 bi bi-x h4 ${theme ? 'text-light':'text-dark' }`} onClick={()=>setReels(false)}></i>
+                                </Link>
+                                    <i className={`h4 bi ${mute? 'bi-volume-down':'bi-volume-up'}`} onClick={()=>{setMute(!mute)}}></i>
                             </div>
                             <div className='me-2 d-flex flex-column position-absolute end-0 top-50 '>
                                 <i className='h4  bi bi-suit-heart'></i>

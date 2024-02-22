@@ -2,9 +2,10 @@
 import Search from './Menu_parts/Search';
 import Submenu from './Menu_parts/Submenu';
 import Notifications from './Menu_parts/Notifications';
-import { useContext } from 'react';
+import { Profiler, useContext } from 'react';
 import { MyContext } from '../../MyContext';
 import { Link } from 'react-router-dom';
+import profile from './Menu_parts/DP/1.jpg';
 const Menu = () => {
     const {
             isMessenger,handleMessenger,
@@ -89,7 +90,8 @@ const Menu = () => {
                             ${isMessenger===true ? 'justify-content-center': 'justify-content-start'} 
                             ${theme === true ? 'btn-dark' : 'btn-light' } `}
                             onClick={()=>{clearStates();setIsOpenProfile(true)}}>
-                                <i className={`h5 bi ${ isOpenProfile ? 'bi-person-fill' : 'bi-person' } ${theme ? 'text-light' : 'text-dark' }`}></i>
+                                {/* <i className={`h5 bi ${ isOpenProfile ? 'bi-person-fill' : 'bi-person' } ${theme ? 'text-light' : 'text-dark' }`}></i> */}
+                                <img src={profile} className={`rounded-circle dp-sm ${ isOpenProfile ? 'bi-person-fill' : 'bi-person' } ${theme ? 'text-light' : 'text-dark' }`} />
                                 <p className={`d-none h5 ms-2   ${isMessenger===true ? '': 'd-lg-block'} ${ isOpenProfile ? 'fw-bolder' : '' }`}>Profie</p>
                         </div>
                     </Link>

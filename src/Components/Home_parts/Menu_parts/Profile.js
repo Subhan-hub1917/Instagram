@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MyContext } from "../../../MyContext";
-
+import image from "./DP/1.jpg";
 const Profile = () => {
     const {theme}=useContext(MyContext);
     return ( 
@@ -8,7 +8,8 @@ const Profile = () => {
         <div className={`col-lg-10 col-12 col-md-11 p-md-3 height-100vh ${theme ? 'text-light bg-dark':'text-dark bg-light'} `}>
             <div className="d-flex p-2 justify-content-center">
                 <div className="">
-                    <i className="display-1 bi bi-person"></i>
+                    <img src={image} alt="Profile" className="rounded-circle"/>
+                    {/* <i className="display-1 bi bi-person"></i> */}
                 </div>
                 <div className="">
                     <div className="d-md-flex align-items-center ms-5 ">
